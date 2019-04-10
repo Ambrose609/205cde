@@ -1,0 +1,55 @@
+<html>
+<style>
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 0px;
+  border: 0px solid #ffffff;
+  border-radius: 0px;
+}
+</style>
+<body>
+    <h1> Buy Games Here and Play at Home </h1>
+	<p>Welcome! Check out different games on different platform here!</p>
+	<p>You can buy the game here and we will take it to you home as fast as possible!</p>
+	<h1>What's New!?</h1>
+	<p>
+	  {% for row in rows %}
+	  <form action = "{{ url_for('addItem') }}" method = "POST">
+	  <table style="width:100%" cellpadding="16">
+		  <tr>
+		    <td><h2>
+		    	<input type="text"  value="{{row[1]}}" name="GameName" readonly style="	font-size: 	26px"></h2>
+		    </td>
+		    <td>Game Description:</td>
+		  </tr>
+		  <tr>
+		    <td>
+		    	YouTube GamePlay:
+		    	<br>
+	    		<iframe width="525" height="295" src="{{row[5]}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+	    	</td>
+		    <td>
+		    	{{row[6]}}
+			</td>
+		  </tr>
+		  <tr>
+		  	<td colspan ="3">
+		  		<b>Release Date: <input type="text"  value="{{row[4]}}" name="GameDate" readonly>
+		  		<br>
+		  		HK$: <input type="text"  value="{{row[2]}}" name="GamePrice" readonly>
+		  		</b>
+
+		  	</td>
+		  </tr>
+		  <tr>
+		  	<td colspan ="3">
+		  		<input type="submit" value="Add to Cart">
+		  	</td>
+		  </tr>
+	  </table>
+	  <hr>
+	  </form>
+	  {% endfor %}
+	</p>
+</body>
+</html>

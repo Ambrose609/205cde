@@ -1,0 +1,54 @@
+<html>
+<style>
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 0px;
+  border: 0px solid #ffffff;
+  border-radius: 0px;
+  resize: vertical;
+}
+</style>
+<body>
+    <h1>Order INFO</h1>
+        <ol>
+
+        {% for row in rows %}
+            <li><--Order
+              <br>
+              Order Item: <span>
+              {{row[0]}}</span>
+              Order Total Price:
+              <span>{{row[0]}}</span><br>
+              Cust Name:
+              <span>{{row[1]}}</span><br>
+              Cust E-mail:
+              <span>{{row[2]}}</span><br>
+              Cust Address :
+              <span>{{row[3]}}</span><br>
+              Cust District:
+              <span>{{row[5]}}</span><br>
+              Card Type:
+              <span>{{row[6]}}</span><br>
+              Credit Card No.:
+              <span>{{row[7]}}</span><br>
+              Card ex date:
+              <span>{{row[8]}}</span><br>
+              CVC:
+              <span>{{row[9]}}</span><br>
+              Card Owner:
+              <span>{{row[10]}}</span><br>
+              Phone Number:
+              <span>{{row[11]}}</span><br>
+
+          </li>
+          <hr>
+        {% endfor %}
+      </ol>
+    </table>
+    <form action = "{{ url_for('RemoveAllOrder') }}" method = "POST">
+    <input type="submit" value="Order All Completed">
+    </form>
+    <h4><a href = "{{ url_for('content') }}">Go back to home page</a></h4>
+    <h4><a href = "{{ url_for('LogOut') }}">Log Out Now</a></h4>
+   </body>
+</html>

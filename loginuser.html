@@ -1,0 +1,12 @@
+<html>
+<body>
+	<h1>You have logged in</h1>
+    <p>Your email is <b>{{session['em']}}</b>
+    <br>
+    
+    <h4><a href = "{{ url_for('UserInformation') }}">Click to Check Your Informaion</a></h4>
+    <h4><a href = "{{ url_for('content') }}">Go back to home page</a></h4>
+    <h4><a href = "{{ url_for('LogOut') }}">Log Out Now</a></h4>
+
+   </body>
+</html>

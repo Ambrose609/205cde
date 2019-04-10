@@ -1,0 +1,278 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+table {
+  border-spacing: 0;
+  width: 100%;
+  border: 0px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+}
+
+
+</style>
+</head>
+
+<body>
+<div class="w3-container">
+<h1> Nintendo Switch Games</h1>
+<table id="myTable">
+  <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+    <th onclick="sortTable(0)" width="59%">Game Name</th>
+    <th onclick="sortDate()" width="10.5%">Issue Date</th>
+    <th onclick="sortTable(2)" width="10.5%">Price(HK$)</th>
+    <th  width="10.5%"></th>
+    <th onclick="sortTable(4)" width="10.5%">Amount</th>
+  </tr>
+  <tr>
+    <td>
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse1" alt="Click to see more description!">BBB</a>
+            </h4>
+          </div>
+          <div id="collapse1" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-8">
+                <img src="img/SEKIRO.jpg" style="width:415px;height:231px" alt="SEKIRO">
+                </div>
+                <div class="col-sm-4" style="font-size: 12px; background: #e6e6e6 width:525px;height:295px">
+                  <p>Game Description:</p>
+                  <p>This game is an action-adventure video game developed by FromSoftware and published by Activision. The game follows a Sengoku period shinobi known as Sekiro as he attempts to take revenge on a samurai who attacked him and kidnapped his lord. The game received universal acclaim from critics. </p>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </td>
+    <td>2019-11-25</td>
+    <td>370</td>
+    <td>
+		<p><img src="img/plus-icon.jpg" style="width:15px;height:15px; float:top">Add to Cart
+		</p>
+	</td>
+    <td>99</td>
+    
+  </tr>
+  <tr>
+    <td>
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse2" alt="Click to see more description!">DDD</a>
+            </h4>
+          </div>
+          <div id="collapse2" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-8">
+                <img src="img/SEKIRO.jpg" style="width:415px;height:231px" alt="SEKIRO">
+                </div>
+                <div class="col-sm-4" style="font-size: 12px; background: #e6e6e6 width:525px;height:295px">
+                  <p>Game Description:</p>
+                  <p>===link to database===</p>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </td>
+    <td>2010-11-27</td>
+    <td>870</td>
+    <td>
+		<p><img src="img/plus-icon.jpg" style="width:15px;height:15px; float:top">Add to Cart
+		</p>
+	</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="panel-group">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+
+            <h4 class="panel-title">
+              <a data-toggle="collapse" href="#collapse3" alt="Click to see more description!">CCC</a>
+            </h4>
+          </div>
+          <div id="collapse3" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-sm-8">
+                <img src="img/SEKIRO.jpg" style="width:415px;height:231px" alt="SEKIRO">
+                </div>
+                <div class="col-sm-4" style="font-size: 12px; background: #e6e6e6 width:525px;height:295px">
+                  <p>Game Description:</p>
+                  <p>===link to database===</p>
+                </div>
+                
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </td>
+    <td>2010-11-27</td>
+    <td>500</td>
+    <td>
+		<p><img src="img/plus-icon.jpg" style="width:15px;height:15px; float:top">Add to Cart
+		</p>
+	</td>
+    <td>50</td>
+  </tr>
+</table>
+</div>
+  <script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[1];
+      y = rows[i + 1].getElementsByTagName("TD")[1];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+function sortNumber() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[4];
+      y = rows[i + 1].getElementsByTagName("TD")[4];
+      //check if the two rows should switch place:
+      if (Number(x.innerHTML) > Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+function sortPrice() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[3];
+      y = rows[i + 1].getElementsByTagName("TD")[3];
+      //check if the two rows should switch place:
+      if (Number(x.innerHTML) > Number(y.innerHTML)) {
+        //if so, mark as a switch and break the loop:
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
+</body>
+</html>

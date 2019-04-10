@@ -1,0 +1,36 @@
+<html>
+<body>
+    <h1>Game INFO</h1>
+    <table border = 1>
+    	<thead>
+    		<td>Id</td>
+            <td>Name</td>
+
+            <td>Price</td>
+            <td>Amount</td>
+            <td>Date</td>
+            <td>Youtube Gameplay</td>
+            <td>Game Description</td>
+            <td>Platform</td>
+        </thead>
+         
+        {% for row in rows %}
+            <tr>
+               <td>{{row[0]}}</td>
+
+               <td>{{row[1]}}</td>
+               <td>{{row[2]}}</td>
+               <td>{{row[3]}}</td>
+               <td>{{row[4]}}</td>
+               <td>{{row[5]}}</td> 
+               <td>{{row[6]}}</td> 
+               <td>{{row[7]}}</td>
+
+            </tr>
+        {% endfor %}
+    </table>
+
+    <h4><a href = "{{ url_for('content') }}">Go back to home page</a></h4>
+    <h4><a href = "{{ url_for('LogOut') }}">Log Out Now</a></h4>
+   </body>
+</html>

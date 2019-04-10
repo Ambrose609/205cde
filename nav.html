@@ -1,0 +1,45 @@
+<html>
+<style>
+/* Style the side navigation */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #ffffcc;
+  overflow-x: hidden;
+  font-weight: bold;
+}
+
+
+/* Side navigation links */
+.sidenav a {
+  color: black;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color on hover */
+.sidenav a:hover {
+  background-color: #ddd;
+  color: blue;
+}
+
+</style>
+
+<body>
+
+<div class="sidenav">
+  <a href="{{ url_for('content') }}" target="rightframe">Home</a>
+  <a href="{{ url_for('PS4') }}" target="rightframe">PS4</a>
+  <a href="{{ url_for('NStest001') }}" target="rightframe">NS</a>
+  <a href="{{ url_for('PS33DS') }}" target="rightframe">3DS & PS3</a>
+  <a href="{{ url_for('ShoppingCart001') }}" target="rightframe">Shopping Cart</a>
+  <a href="{{ url_for('LoginP') }}" target="rightframe">LogIn/LogOut</a>
+  <a href="{{ url_for('UserInformation') }}" target="rightframe">Your INFO.</a>
+</div>
+</body>
+</html>

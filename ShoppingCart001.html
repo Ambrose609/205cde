@@ -1,0 +1,288 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<style>
+table {
+  border-spacing: 0;
+  width: 100%;
+  border: 0px solid #ddd;
+}
+
+th {
+  cursor: pointer;
+}
+
+th, td {
+  text-align: middle;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 12px;
+}
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 0px;
+  border: 0px solid #ffffff;
+  border-radius: 0px;
+  resize: vertical;
+}
+
+input[type=email], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=password], select, textarea {
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+input[type=number], select, textarea {
+  width: 40%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+
+
+input[type=tel]{
+  width: 20%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=radio], select{
+  padding: :12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.collapsible {
+  background-color: #FFFFFF;
+  color: black;
+  cursor: pointer;
+  padding: 14px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: 1px;
+  font-size: 14px;
+}
+
+.active, .collapsible:hover {
+  background-color: darkblue;
+  color: white;
+}
+
+.content {
+  padding: 0 14px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+</style>
+</head>
+<body>
+<div class="w3-container">
+<h2> You can check what you have selected below:</h2>
+<table id="myTable">
+  <tr>
+   <!--When a header is clicked, run the sortTable function, with a parameter, 0 for sorting by names, 1 for sorting by country:-->  
+    <th width="59%" style=" font-size:  14px">Game Name</th>
+    <th width="10.5%" style=" font-size:  14px">Issue Date</th>
+    <th width="10.5%" style=" font-size:  14px">Price(HK$)</th>
+    <th width="10.5%" style=" font-size:  14px">Amount</th>
+    <th width="10.5%"></th>
+  </tr>
+
+  {% for row in rows %}
+  <form action = "{{ url_for('removeItem') }}" method = "POST">
+      <tr>
+        <td font-style="bold" width="59%">
+            <input type="text"  value="{{row[0]}}" name="GameName" readonly>
+        </td>
+        <td width="10.5%">
+          <input type="text"  value="{{row[2]}}" name="GameDate" readonly>
+        </td>
+        <td width="10.5%">
+          <input type="text"  value="{{row[1]}}" name="GamePrice" readonly>
+        </td>
+        <td width="10.5%">
+          1
+        </td>
+        <td width="10.5%">
+          <input type="submit" value="Delete">
+        </td>
+      </tr>
+  </form>
+  {% endfor %}
+  <tr>
+    <td style=" font-size:  18px">
+      Total Price: HK$
+    </td>
+    <td></td>
+    <td style=" font-size:  18px">{{totalPrice}}</td>
+    <td></td>
+    <td>
+      <form action = "{{ url_for('removeAllItem') }}" method = "POST">
+        <input type="submit" value="Delete All">
+      </form>
+    </td>
+      
+  </tr>
+
+</table>
+<br>
+<br>
+<p>Total Price is: HK${{totalPrice}}</P>
+<p>Total Item:{{totalItem}}</p>
+
+<hr>
+<a href="{{ url_for('payment_non_member') }}" class="button">Finish the payment</a>
+</p>
+</div>
+</body>
+<script>
+function sortTable(n) {
+  var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+  table = document.getElementById("myTable");
+  switching = true;
+  //Set the sorting direction to ascending:
+  dir = "asc"; 
+  /*Make a loop that will continue until
+  no switching has been done:*/
+  while (switching) {
+    //start by saying: no switching is done:
+    switching = false;
+    rows = table.rows;
+    /*Loop through all table rows (except the
+    first, which contains table headers):*/
+    for (i = 1; i < (rows.length - 1); i++) {
+      //start by saying there should be no switching:
+      shouldSwitch = false;
+      /*Get the two elements you want to compare,
+      one from current row and one from the next:*/
+      x = rows[i].getElementsByTagName("TD")[n];
+      y = rows[i + 1].getElementsByTagName("TD")[n];
+      /*check if the two rows should switch place,
+      based on the direction, asc or desc:*/
+      if (dir == "asc") {
+        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch= true;
+          break;
+        }
+      } else if (dir == "desc") {
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          //if so, mark as a switch and break the loop:
+          shouldSwitch = true;
+          break;
+        }
+      }
+    }
+    if (shouldSwitch) {
+      /*If a switch has been marked, make the switch
+      and mark that a switch has been done:*/
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+      //Each time a switch is done, increase this count by 1:
+      switchcount ++;      
+    } else {
+      /*If no switching has been done AND the direction is "asc",
+      set the direction to "desc" and run the while loop again.*/
+      if (switchcount == 0 && dir == "asc") {
+        dir = "desc";
+        switching = true;
+      }
+    }
+  }
+}
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+
+</script>
+</html>

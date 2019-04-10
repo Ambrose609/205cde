@@ -1,0 +1,12 @@
+<html>
+   <body>
+      <h1>You are admin</h1>
+      <h3><a href = "{{ url_for('AdminCheckUserInfo') }}">Check all member Information</a></h3>
+      <h3><a href = "{{ url_for('AdminCheckGameInfo') }}">Check all Game product Information</a></h3>
+      <h3><a href = "{{ url_for('AdminCheckOrder') }}">Check all Order Information</a></h3>      
+      <h3><a href = "{{ url_for('AddGameInfoPage') }}">Add more Game product Information</a></h3>
+      <h3><a href = "{{ url_for('content') }}">Go back to home page</a></h3>
+      <h3><a href = "{{ url_for('LogOut') }}">Log Out Now</a></h3>
+   </body>
+</html>
+

@@ -1,0 +1,224 @@
+<html>
+<head>
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=E-mail], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: left;
+}
+
+
+
+input[type=tel]{
+  width: 20%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=radio], select{
+  padding: :12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<h2>Payment</h2>
+
+<hr>
+<p>Please enter your information below:</p>
+
+<div class="container">
+  <form action="/action_page.php">
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">Name</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="fname" name="Name" placeholder="Please enter your name...">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">E-mail address</label>
+    </div>
+    <div class="col-75">
+      <input type="E-mail" id="lname" name="E-mail" placeholder="Your E-mail address...">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">Address</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="lname" name="Address" placeholder="Your Address...">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="country">District</label>
+    </div>
+    <div class="col-75">
+      <select id="District" name="District" placeholder="Select your District...">
+        <optgroup label="Hong Kong Island">
+        	<option value="Central and Western">Central and Western</option>
+        	<option value="Wan Chai">Wan Chai</option>
+        	<option value="Eastern">Eastern</option>
+        	<option value="Southern">Southern</option>
+        </optgroup>
+        <optgroup label="Kowloon">
+        	<option value="Yau TsimMong">Yau TsimMong</option>
+        	<option value="Sham Shui Po">Sham Shui Po</option>
+        	<option value="Kowloon City">Kowloon City</option>
+        	<option value="Wong Tai Sin">Wong Tai Sin</option>
+        	<option value="Kwun Tong">Kwun Tong</option>
+        	</optgroup>
+        <optgroup label="New Territories">
+        	<option value="Kwai Tsing">Kwai Tsing</option>
+        	<option value="Tsuen Wan">Tsuen Wan</option>
+        	<option value="Tuen Mun">Tuen Mun</option>
+        	<option value="Yuen Long">Yuen Long</option>
+        	<option value="North">North</option>
+        	<option value="Tai Po">Tai Po</option>
+        	<option value="Sha Tin">Sha Tin</option>
+        	<option value="Sai Kung">Sai Kung</option>
+        	<option value="Islands">Islands</option>
+        </optgroup>
+       
+      </select>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+  	<div class="col-25">
+  		<label for="fname">Credit Card's Type</label>
+  	</div>
+  	<div class="col-75">
+  		<input type="radio" id="fCardDetail" name="CardType" value="VISA">VISA
+  		<input type="radio" id="fCardDetail" name="CardType" value="MasterCard">MasterCard
+  		<input type="radio" id="fCardDetail" name="CardType" value="Paypal">Paypal
+  	</div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">Your credit card number</label>
+    </div>
+    <div class="col-75">
+      <input type="tel" id="fname" name="CreditCard" max="99999999" placeholder="Valid Card Number...">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">Expiration Date</label>
+    </div>
+    <div class="col-75">
+      <input type="tel" id="fname" name="ExpirationDate" max="9999" placeholder="MM / YY">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">CV CODE</label>
+    </div>
+    <div class="col-75">
+      <input type="tel" max="999" id="fname" name="CvCode" placeholder="CVC">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="fname">Card Owner</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="fname" name="Card Owner" placeholder="Card Owner Names...">
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-25">
+      <label for="subject">Special Requirement</label>
+    </div>
+    <div class="col-75">
+      <textarea id="subject" name="subject" placeholder="Please tell us if you have any special requirement..." style="height:200px"></textarea>
+    </div>
+  </div>
+  <div class="row">
+  	<div class="col-25">
+  	</div>
+  	<div class="col-75">
+    <input type="submit" value="Submit" href="content.html">
+	</div>
+  </div>
+  </form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<html>
+
+
+<frameset rows="7%,*,0%" frameborder="0" brder="0">
+  <frame src="{{ url_for('header2') }}" frameborder="0" border="0" name="topframe">
+
+  <frameset cols="10%,*" frameborder="0" border="0">
+  	<frame src="{{ url_for('nav') }}" frameborder="0" border="0">
+  	<frame src="{{ url_for('content') }}" frameborder="0" border="0" name="rightframe">
+  </frameset>
+<frame src="{{ url_for('footer') }}" frameborder="0" border="0">
+</frameset>
+
+</html>
